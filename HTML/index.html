@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="">
+            <label for="">Nhập User name:</label>
+            <input type="text" name="" id="txtus" placeholder="User name">
+            <br>
+
+            <label for="">Mật khẩu:</label>
+            <input type="password" name="" id="txtmk" placeholder="password">
+            <br>
+
+            <label for="">Giới tính:</label>
+            <input type="radio" name="gt" id="gt" value="Nam">Nam
+            <input type="radio" name="gt" id="gt" value="Nữ">Nữ
+            <br>
+            <label for="">Chọn nước uống:</label>
+            <br>
+            <input type="checkbox" name="" id="menu" value="Trung Nguyen">Trung Nguyên
+            <br>
+            <input type="checkbox" name="" id="menu" value="MeKong">MeKong
+            <br>
+            <input type="checkbox" name="" id="menu" value="Trà sữa">Trà sữa
+            <br>
+            <input type="button" value="Nhập" onclick="nhap()">
+            <br>
+        </form>
+    </div>
+</body>
+<script>
+    function nhap() {
+        var tendn, mk;
+        tendn = document.getElementById("txtus").value;
+        mk = document.getElementById("txtmk").value;
+
+        var cafe = new Array();
+        var taphop = document.querySelectorAll("input[type='checkbox']");
+        taphop.forEach(function(chk) {
+            if (chk.checked)
+                cafe.push(chk.value);
+        });
+
+        var gt;
+        var taphopgt = document.querySelectorAll("input[type='radio']");
+        taphopgt.forEach(function(ra) {
+            if (ra.checked)
+                gt = ra.value;
+        });
+
+        var w = window.open("infor.html");
+
+        localStorage.setItem("us", tendn);
+        localStorage.setItem("pd", mk);
+        localStorage.setItem("cf", cafe);
+        localStorage.setItem("gt", gt);
+    }
+</script>
+
+</html>
